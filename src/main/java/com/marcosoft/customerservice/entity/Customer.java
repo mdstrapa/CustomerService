@@ -10,11 +10,13 @@ import javax.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Builder
 @Data
 @Entity
 @AllArgsConstructor
+@NoArgsConstructor
 public class Customer {
 
     @Id

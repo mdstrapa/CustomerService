@@ -1,5 +1,6 @@
 #!/bin/bash
+SERVER_NAME=ubuntu@ec2-18-212-52-252.compute-1.amazonaws.com
 ./mvnw clean package
-ssh -i /Users/marcosstrapazon/.ssh/awsMarcosAccounnt.pem rm *.jar
-scp -i /Users/marcosstrapazon/.ssh/awsMarcosAccounnt.pem target/*.jar ubuntu@ec2-35-173-198-99.compute-1.amazonaws.com:~
-ssh -i /Users/marcosstrapazon/.ssh/awsMarcosAccounnt.pem sudo systemctl restart customer-service
+ssh -i /Users/marcosstrapazon/.ssh/awsMarcosAccounnt.pem $SERVER_NAME rm "~/*.jar"
+scp -i /Users/marcosstrapazon/.ssh/awsMarcosAccounnt.pem target/*.jar $SERVER_NAME:~
+ssh -i /Users/marcosstrapazon/.ssh/awsMarcosAccounnt.pem $SERVER_NAME "sudo systemctl restart customer-service"

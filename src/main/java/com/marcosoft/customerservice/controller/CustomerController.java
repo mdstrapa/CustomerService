@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("customer")
 @RequiredArgsConstructor
 public class CustomerController {
 
@@ -24,8 +25,8 @@ public class CustomerController {
     }
 
 
-    @GetMapping
-    public ResponseEntity<Customer> getCustomer(@RequestParam Integer customerId){
+    @GetMapping("/{customerId}")
+    public ResponseEntity<Customer> getCustomer(@PathVariable Integer customerId){
         return repository.findById(customerId)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.status(HttpStatus.NO_CONTENT).build());
